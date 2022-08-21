@@ -63,9 +63,14 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   Capybara.server_host = "0.0.0.0"
+  Capybara.server_port = 4000
   Capybara.app_host = "http://#{ENV.fetch("HOSTNAME")}:#{Capybara.server_port}"
 
   config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
     driven_by :selenium, using: :chrome, screen_size: [1400, 1400], options: {
       browser: :remote,
       url: "http://chrome-server:4444"

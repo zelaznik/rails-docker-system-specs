@@ -7,7 +7,7 @@ describe "Home Page", type: :system do
     expect(page).to have_link("New post", href: "/posts/new")
   end
 
-  it "responds to javascript" do
+  it "responds to javascript", js: true do
     visit "/posts"
     expect(page).to have_content("Clicked 0 time(s).")
 
