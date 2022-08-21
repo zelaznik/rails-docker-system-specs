@@ -3,6 +3,14 @@
 <h1>Posts</h1>
 
 <div id="posts">
+  <div id="counter">
+    Clicked <span id="count">0</span> time(s).
+  </div>
+
+  <button onclick="javascript:document.querySelector('#count').textContent = Number(document.querySelector('#count').textContent) + 1">
+    Click here
+  </button>
+
   <% @posts.each do |post| %>
     <%= render post %>
     <p>
